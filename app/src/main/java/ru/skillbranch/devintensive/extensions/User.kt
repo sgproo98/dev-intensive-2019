@@ -7,7 +7,7 @@ import java.util.*
 
 fun User.toUserView(): UserView {
 
-    val nickName = Utils.transliteration("$firstName $lastName")
+    val nickName = Utils.transliteration("$firstName $lastName", "_")
     val initial =  Utils.toInitials(firstName, lastName)
     val status = when {
         lastVisit == null -> "Ещё ни разу не был онлайн."
