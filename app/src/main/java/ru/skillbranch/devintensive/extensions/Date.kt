@@ -3,6 +3,7 @@ package ru.skillbranch.devintensive.extensions
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 
 const val SECOND = 1000L
 const val MINUTE = 60 * SECOND
@@ -32,10 +33,16 @@ fun Date.add(value: Int, utils: TimeUnits = TimeUnits.SECOND): Date {
 
 fun Date.humanizeDiff(date: Date = Date()): String {
 
-    val value = this.time - date.time
+    val value = abs(date.time - this.time)
 
-    return when {
-        value > TimeUnit.DAYS.toMillis(360) -> "более года назад"
+    val result = when {
+        value > TimeUnit.DAYS.toMillis(360) -> {
+            return if(date.time < this.time)
+                "более чем через год"
+            else{
+                "более года назад"
+            }
+        }
         value > TimeUnit.HOURS.toMillis(26) -> getWordOfValues(
             TimeUnit.MILLISECONDS.toDays(value),
             TimeUnits.DAY
@@ -53,8 +60,9 @@ fun Date.humanizeDiff(date: Date = Date()): String {
         )
         value > TimeUnit.SECONDS.toMillis(45) -> "минуту назад"
         value > TimeUnit.SECONDS.toMillis(1) -> "несколько секунд назад"
-        else -> "только что"
+        else -> return "только что"
     }
+    return if(date.time < this.time) "через $result" else "$result назад"
 }
 
 private fun getWordOfValues(value: Long, type: TimeUnits): String {
