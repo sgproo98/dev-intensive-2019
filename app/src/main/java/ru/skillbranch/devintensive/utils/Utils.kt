@@ -20,6 +20,7 @@ object Utils {
         return firstName to lastName
     }
 
+
     fun transliteration(payload: String, divider: String = " "): String {
         return payload.replace(Regex("[абвгдеёжзийклмнопрстуфхцчъьыэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯ]")) {
             when (it.value) {
