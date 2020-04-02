@@ -1,6 +1,5 @@
 package ru.skillbranch.devintensive.utils
 
-import ru.skillbranch.devintensive.models.User
 
 object Utils {
     fun parseFullName(fullName: String?): Pair<String?, String?> {
@@ -22,10 +21,24 @@ object Utils {
     }
 
     fun transliteration(payload: String, divider: String = " "): String {
-        TODO("Not yet implemented")
+        return ""
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
-        TODO("Not yet implemented")
+        val builder = StringBuilder()
+
+        if(firstName.isNullOrBlank() && lastName.isNullOrBlank()){
+            return null
+        }
+
+        firstName?.let {
+            builder.append(it[0].toUpperCase())
+        }
+
+        lastName?.let{
+            builder.append(it[0].toUpperCase())
+        }
+
+        return builder.toString()
     }
 }
