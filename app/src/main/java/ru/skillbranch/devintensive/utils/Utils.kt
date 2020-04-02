@@ -21,20 +21,78 @@ object Utils {
     }
 
     fun transliteration(payload: String, divider: String = " "): String {
+        return payload.replace(Regex("[абвгдеёжзийклмнопрстуфхцчъьыэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯ]")) {
+            when (it.value) {
+                "а" -> "a"
+                "б" -> "b"
+                "в" -> "v"
+                "г" -> "g"
+                "д" -> "d"
+                "е" -> "e"
+                "ё" -> "e"
+                "ж" -> "zh"
+                "з" -> "z"
+                "и" -> "i"
+                "й" -> "i"
+                "к" -> "k"
+                "л" -> "l"
+                "м" -> "m"
+                "н" -> "n"
+                "о" -> "o"
+                "п" -> "p"
+                "р" -> "r"
+                "с" -> "s"
+                "т" -> "t"
+                "у" -> "u"
+                "ф" -> "f"
+                "х" -> "h"
+                "ц" -> "c"
+                "ч" -> "ch"
+                "ш" -> "sh"
+                "щ" -> "sh"
+                "ъ" -> ""
+                "ы" -> "i"
+                "ь" -> ""
+                "э" -> "e"
+                "ю" -> "yu"
+                "я" -> "ya"
+                "а".toUpperCase() -> "a".toUpperCase()
+                "б".toUpperCase() -> "b".toUpperCase()
+                "в".toUpperCase() -> "v".toUpperCase()
+                "г".toUpperCase() -> "g".toUpperCase()
+                "д".toUpperCase() -> "d".toUpperCase()
+                "е".toUpperCase() -> "e".toUpperCase()
+                "ё".toUpperCase() -> "e".toUpperCase()
+                "ж".toUpperCase() -> "zh".toUpperCase()
+                "з".toUpperCase() -> "z".toUpperCase()
+                "и".toUpperCase() -> "i".toUpperCase()
+                "й".toUpperCase() -> "i".toUpperCase()
+                "к".toUpperCase() -> "k".toUpperCase()
+                "л".toUpperCase() -> "l".toUpperCase()
+                "м".toUpperCase() -> "m".toUpperCase()
+                "н".toUpperCase() -> "n".toUpperCase()
+                "о".toUpperCase() -> "o".toUpperCase()
+                "п".toUpperCase() -> "p".toUpperCase()
+                "р".toUpperCase() -> "r".toUpperCase()
+                "с".toUpperCase() -> "s".toUpperCase()
+                "т".toUpperCase() -> "t".toUpperCase()
+                "у".toUpperCase() -> "u".toUpperCase()
+                "ф".toUpperCase() -> "f".toUpperCase()
+                "х".toUpperCase() -> "h".toUpperCase()
+                "ц".toUpperCase() -> "c".toUpperCase()
+                "ч".toUpperCase() -> "ch".toUpperCase()
+                "ш".toUpperCase() -> "sh".toUpperCase()
+                "щ".toUpperCase() -> "sh".toUpperCase()
+                "ъ".toUpperCase() -> "".toUpperCase()
+                "ы".toUpperCase() -> "i".toUpperCase()
+                "ь".toUpperCase() -> "".toUpperCase()
+                "э".toUpperCase() -> "e".toUpperCase()
+                "ю".toUpperCase() -> "yu".toUpperCase()
+                "я".toUpperCase() -> "ya".toUpperCase()
+                else -> divider
 
-        val (firstName, lastName) = parseFullName(payload)
-
-        val builder = StringBuilder()
-
-        val newFirstName = firstName?.let {
-            builder.append(getReplaceString(it).capitalize() + divider)
+            }
         }
-
-        val newLastName = lastName?.let {
-            builder.append(getReplaceString(it).capitalize())
-        }
-
-        return builder.toString()
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
@@ -57,46 +115,6 @@ object Utils {
 
 }
 
-private fun getReplaceString(name: String): String {
-    return name.replace(Regex("[абвгдеёжзийклмнопрстуфхцчъьыэюя]")) {
-        when (it.value.toLowerCase()) {
-            "а" -> "a"
-            "б" -> "b"
-            "в" -> "v"
-            "г" -> "g"
-            "д" -> "d"
-            "е" -> "e"
-            "ё" -> "e"
-            "ж" -> "zh"
-            "з" -> "z"
-            "и" -> "i"
-            "й" -> "i"
-            "к" -> "k"
-            "л" -> "l"
-            "м" -> "m"
-            "н" -> "n"
-            "о" -> "o"
-            "п" -> "p"
-            "р" -> "r"
-            "с" -> "s"
-            "т" -> "t"
-            "у" -> "u"
-            "ф" -> "f"
-            "х" -> "h"
-            "ц" -> "c"
-            "ч" -> "ch"
-            "ш" -> "sh"
-            "щ" -> "sh"
-            "ъ" -> ""
-            "ы" -> "i"
-            "ь" -> ""
-            "э" -> "e"
-            "ю" -> "yu"
-            "я" -> "ya"
-            else -> ""
 
-        }
-    }
-}
 
 
