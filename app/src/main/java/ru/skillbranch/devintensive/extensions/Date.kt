@@ -66,14 +66,12 @@ fun Date.humanizeDiff(date: Date = Date()): String {
 }
 
 private fun getWordOfValues(value: Long, type: TimeUnits): String {
-    val mod = value % 10
-
 
     return when (type) {
-        TimeUnits.SECOND -> "$value ${TimeUnits.SECOND.plural(mod)}"
-        TimeUnits.MINUTE -> "$value ${TimeUnits.MINUTE.plural(mod)}"
-        TimeUnits.HOUR -> "$value ${TimeUnits.HOUR.plural(mod)}"
-        TimeUnits.DAY -> "$value ${TimeUnits.DAY.plural(mod)}"
+        TimeUnits.SECOND -> "$value ${TimeUnits.SECOND.plural(value)}"
+        TimeUnits.MINUTE -> "$value ${TimeUnits.MINUTE.plural(value)}"
+        TimeUnits.HOUR -> "$value ${TimeUnits.HOUR.plural(value)}"
+        TimeUnits.DAY -> "$value ${TimeUnits.DAY.plural(value)}"
     }
 
 }
@@ -81,38 +79,38 @@ private fun getWordOfValues(value: Long, type: TimeUnits): String {
 enum class TimeUnits {
     SECOND {
         override fun plural(value: Long): String {
-            return when (value) {
-                1L -> "секунда"
-                2L, 3L, 4L -> "секунды"
-                else -> "секунд"
+            return when (value % 10) {
+                1L -> "$value секунда"
+                2L, 3L, 4L -> "$value секунды"
+                else -> "$value секунд"
             }
         }
 
     },
     MINUTE {
         override fun plural(value: Long): String {
-            return when (value) {
-                1L -> "минута"
-                2L, 3L, 4L -> "минуты"
-                else -> "минут"
+            return when (value % 10) {
+                1L -> "$value минута"
+                2L, 3L, 4L -> "$value минуты"
+                else -> "$value минут"
             }
         }
     },
     HOUR {
         override fun plural(value: Long): String {
-            return when (value) {
-                1L -> "час"
-                2L, 3L, 4L -> "часа"
-                else -> "часов"
+            return when (value % 10) {
+                1L -> "$value час"
+                2L, 3L, 4L -> "$value часа"
+                else -> "$value часов"
             }
         }
     },
     DAY {
         override fun plural(value: Long): String {
-            return when (value) {
-                1L -> "день"
-                2L, 3L, 4L -> "дня"
-                else -> "дней"
+            return when (value % 10) {
+                1L -> "$value день"
+                2L, 3L, 4L -> "$value дня"
+                else -> "$value дней"
             }
         }
     };
