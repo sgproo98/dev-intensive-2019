@@ -24,6 +24,9 @@ fun String.truncate(count: Int = 16): String {
 
     }
 
+}
 
+fun String.stripHtml(): String{
 
+    return ""
 }

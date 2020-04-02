@@ -22,78 +22,83 @@ object Utils {
 
 
     fun transliteration(payload: String, divider: String = " "): String {
-        return payload.replace(Regex("[абвгдеёжзийклмнопрстуфхцчъьыэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯ]")) {
-            when (it.value) {
-                "а" -> "a"
-                "б" -> "b"
-                "в" -> "v"
-                "г" -> "g"
-                "д" -> "d"
-                "е" -> "e"
-                "ё" -> "e"
-                "ж" -> "zh"
-                "з" -> "z"
-                "и" -> "i"
-                "й" -> "i"
-                "к" -> "k"
-                "л" -> "l"
-                "м" -> "m"
-                "н" -> "n"
-                "о" -> "o"
-                "п" -> "p"
-                "р" -> "r"
-                "с" -> "s"
-                "т" -> "t"
-                "у" -> "u"
-                "ф" -> "f"
-                "х" -> "h"
-                "ц" -> "c"
-                "ч" -> "ch"
-                "ш" -> "sh"
-                "щ" -> "sh"
-                "ъ" -> ""
-                "ы" -> "i"
-                "ь" -> ""
-                "э" -> "e"
-                "ю" -> "yu"
-                "я" -> "ya"
-                "а".toUpperCase() -> "a".toUpperCase()
-                "б".toUpperCase() -> "b".toUpperCase()
-                "в".toUpperCase() -> "v".toUpperCase()
-                "г".toUpperCase() -> "g".toUpperCase()
-                "д".toUpperCase() -> "d".toUpperCase()
-                "е".toUpperCase() -> "e".toUpperCase()
-                "ё".toUpperCase() -> "e".toUpperCase()
-                "ж".toUpperCase() -> "zh".toUpperCase()
-                "з".toUpperCase() -> "z".toUpperCase()
-                "и".toUpperCase() -> "i".toUpperCase()
-                "й".toUpperCase() -> "i".toUpperCase()
-                "к".toUpperCase() -> "k".toUpperCase()
-                "л".toUpperCase() -> "l".toUpperCase()
-                "м".toUpperCase() -> "m".toUpperCase()
-                "н".toUpperCase() -> "n".toUpperCase()
-                "о".toUpperCase() -> "o".toUpperCase()
-                "п".toUpperCase() -> "p".toUpperCase()
-                "р".toUpperCase() -> "r".toUpperCase()
-                "с".toUpperCase() -> "s".toUpperCase()
-                "т".toUpperCase() -> "t".toUpperCase()
-                "у".toUpperCase() -> "u".toUpperCase()
-                "ф".toUpperCase() -> "f".toUpperCase()
-                "х".toUpperCase() -> "h".toUpperCase()
-                "ц".toUpperCase() -> "c".toUpperCase()
-                "ч".toUpperCase() -> "ch".toUpperCase()
-                "ш".toUpperCase() -> "sh".toUpperCase()
-                "щ".toUpperCase() -> "sh".toUpperCase()
-                "ъ".toUpperCase() -> "".toUpperCase()
-                "ы".toUpperCase() -> "i".toUpperCase()
-                "ь".toUpperCase() -> "".toUpperCase()
-                "э".toUpperCase() -> "e".toUpperCase()
-                "ю".toUpperCase() -> "yu".toUpperCase()
-                "я".toUpperCase() -> "ya".toUpperCase()
-                else -> divider
 
+        val builder = StringBuilder()
+
+        payload.forEach {
+            when (it.toString()) {
+                "а" -> builder.append("a")
+                "б" -> builder.append("b")
+                "в" -> builder.append("v")
+                "г" -> builder.append("g")
+                "д" -> builder.append("d")
+                "е" -> builder.append("e")
+                "ё" -> builder.append("e")
+                "ж" -> builder.append("zh")
+                "з" -> builder.append("z")
+                "и" -> builder.append("i")
+                "й" -> builder.append("i")
+                "к" -> builder.append("k")
+                "л" -> builder.append("l")
+                "м" -> builder.append("m")
+                "н" -> builder.append("n")
+                "о" -> builder.append("o")
+                "п" -> builder.append("p")
+                "р" -> builder.append("r")
+                "с" -> builder.append("s")
+                "т" -> builder.append("t")
+                "у" -> builder.append("u")
+                "ф" -> builder.append("f")
+                "х" -> builder.append("h")
+                "ц" -> builder.append("c")
+                "ч" -> builder.append("ch")
+                "ш" -> builder.append("sh")
+                "щ" -> builder.append("sh")
+                "ъ" -> builder.append("")
+                "ы" -> builder.append("i")
+                "ь" -> builder.append("")
+                "э" -> builder.append("e")
+                "ю" -> builder.append("yu")
+                "я" -> builder.append("ya")
+                "а".toUpperCase() -> builder.append("a".toUpperCase())
+                "б".toUpperCase() -> builder.append("b".toUpperCase())
+                "в".toUpperCase() -> builder.append("v".toUpperCase())
+                "г".toUpperCase() -> builder.append("g".toUpperCase())
+                "д".toUpperCase() -> builder.append("d".toUpperCase())
+                "е".toUpperCase() -> builder.append("e".toUpperCase())
+                "ё".toUpperCase() -> builder.append("e".toUpperCase())
+                "ж".toUpperCase() -> builder.append("zh".toUpperCase())
+                "з".toUpperCase() -> builder.append("z".toUpperCase())
+                "и".toUpperCase() -> builder.append("i".toUpperCase())
+                "й".toUpperCase() -> builder.append("i".toUpperCase())
+                "к".toUpperCase() -> builder.append("k".toUpperCase())
+                "л".toUpperCase() -> builder.append("l".toUpperCase())
+                "м".toUpperCase() -> builder.append("m".toUpperCase())
+                "н".toUpperCase() -> builder.append("n".toUpperCase())
+                "о".toUpperCase() -> builder.append("o".toUpperCase())
+                "п".toUpperCase() -> builder.append("p".toUpperCase())
+                "р".toUpperCase() -> builder.append("r".toUpperCase())
+                "с".toUpperCase() -> builder.append("s".toUpperCase())
+                "т".toUpperCase() -> builder.append("t".toUpperCase())
+                "у".toUpperCase() -> builder.append("u".toUpperCase())
+                "ф".toUpperCase() -> builder.append("f".toUpperCase())
+                "х".toUpperCase() -> builder.append("h".toUpperCase())
+                "ц".toUpperCase() -> builder.append("c".toUpperCase())
+                "ч".toUpperCase() -> builder.append("ch".toUpperCase())
+                "ш".toUpperCase() -> builder.append("sh".toUpperCase())
+                "щ".toUpperCase() -> builder.append("sh".toUpperCase())
+                "ъ".toUpperCase() -> builder.append("".toUpperCase())
+                "ы".toUpperCase() -> builder.append("i".toUpperCase())
+                "ь".toUpperCase() -> builder.append("".toUpperCase())
+                "э".toUpperCase() -> builder.append("e".toUpperCase())
+                "ю".toUpperCase() -> builder.append("yu".toUpperCase())
+                "я".toUpperCase() -> builder.append("ya".toUpperCase())
+                " " -> builder.append(divider)
+                else -> builder.append(it)
             }
         }
+
+        return builder.toString()
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
