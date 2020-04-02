@@ -47,19 +47,19 @@ fun Date.humanizeDiff(date: Date = Date()): String {
             TimeUnit.MILLISECONDS.toDays(value),
             TimeUnits.DAY
         )
-        value >= TimeUnit.HOURS.toMillis(22) -> "день назад"
+        value >= TimeUnit.HOURS.toMillis(22) -> "день"
         value > TimeUnit.MINUTES.toMillis(75) -> getWordOfValues(
             TimeUnit.MILLISECONDS.toHours(value),
             TimeUnits.HOUR
         )
-        value > TimeUnit.MINUTES.toMillis(45) -> "час назад"
+        value > TimeUnit.MINUTES.toMillis(45) -> "час"
         value > TimeUnit.SECONDS.toMillis(75) -> getWordOfValues(
             TimeUnit.MILLISECONDS.toMinutes(
                 value
             ), TimeUnits.MINUTE
         )
-        value > TimeUnit.SECONDS.toMillis(45) -> "минуту назад"
-        value > TimeUnit.SECONDS.toMillis(1) -> "несколько секунд назад"
+        value > TimeUnit.SECONDS.toMillis(45) -> "минуту"
+        value > TimeUnit.SECONDS.toMillis(1) -> "несколько секунд"
         else -> return "только что"
     }
     return if(date.time < this.time) "через $result" else "$result назад"
@@ -68,10 +68,10 @@ fun Date.humanizeDiff(date: Date = Date()): String {
 private fun getWordOfValues(value: Long, type: TimeUnits): String {
 
     return when (type) {
-        TimeUnits.SECOND -> "$value ${TimeUnits.SECOND.plural(value)}"
-        TimeUnits.MINUTE -> "$value ${TimeUnits.MINUTE.plural(value)}"
-        TimeUnits.HOUR -> "$value ${TimeUnits.HOUR.plural(value)}"
-        TimeUnits.DAY -> "$value ${TimeUnits.DAY.plural(value)}"
+        TimeUnits.SECOND -> TimeUnits.SECOND.plural(value)
+        TimeUnits.MINUTE -> TimeUnits.MINUTE.plural(value)
+        TimeUnits.HOUR -> TimeUnits.HOUR.plural(value)
+        TimeUnits.DAY -> TimeUnits.DAY.plural(value)
     }
 
 }
@@ -80,7 +80,7 @@ enum class TimeUnits {
     SECOND {
         override fun plural(value: Long): String {
             return when (value % 10) {
-                1L -> "$value секунда"
+                1L -> "$value секунду"
                 2L, 3L, 4L -> "$value секунды"
                 else -> "$value секунд"
             }
@@ -90,7 +90,7 @@ enum class TimeUnits {
     MINUTE {
         override fun plural(value: Long): String {
             return when (value % 10) {
-                1L -> "$value минута"
+                1L -> "$value минуту"
                 2L, 3L, 4L -> "$value минуты"
                 else -> "$value минут"
             }
