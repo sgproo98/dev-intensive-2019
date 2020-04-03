@@ -1,17 +1,15 @@
 package ru.skillbranch.devintensive.extensions
 
+import android.widget.Toast
+
+
 fun String.truncate(count: Int = 16): String {
 
     return if (this.length <= count) {
         this
     } else {
 
-        var ifNotSpace = false
-        this.substring(count).forEach {
-            if(it != ' ') ifNotSpace = true
-        }
-
-        if(ifNotSpace){
+        if(this.substring(count).isBlank()){
 
         if (this.substring(0, count)[count - 1] == ' ') this.substring(
             0,
@@ -21,6 +19,8 @@ fun String.truncate(count: Int = 16): String {
         } else{
             this.trim()
         }
+
+        
 
     }
 
