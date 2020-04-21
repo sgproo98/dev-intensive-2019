@@ -65,6 +65,18 @@ fun Date.humanizeDiff(date: Date = Date()): String {
     return if(date.time < this.time) "через $result" else "$result назад"
 }
 
+fun Date.shortFormat(): String{
+    val pattern = if(this.isSameDay(this)) "HH:mm" else "dd:MM:yy"
+    val dateFormat = SimpleDateFormat(pattern, Locale("ru"))
+    return dateFormat.format(this)
+}
+
+fun Date.isSameDay(date: Date) : Boolean{
+    val day1 = this.time / DAY
+    val day2 = date.time / DAY
+    return day1 == day2
+}
+
 private fun getWordOfValues(value: Long, type: TimeUnits): String {
 
     return when (type) {
