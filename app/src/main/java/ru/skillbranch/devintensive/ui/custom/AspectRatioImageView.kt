@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import ru.skillbranch.devintensive.R
 
-class AspectRationImageView @JvmOverloads constructor(
+class AspectRatioImageView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -20,8 +20,8 @@ class AspectRationImageView @JvmOverloads constructor(
 
     init {
         attrs?.let {
-            val a = context.obtainStyledAttributes(it, R.styleable.AspectRationImageView)
-            aspectRatio = a.getFloat(R.styleable.AspectRationImageView_aspectRatio, DEFAULT_ASPECT_RATIO)
+            val a = context.obtainStyledAttributes(it, R.styleable.AspectRatioImageView)
+            aspectRatio = a.getFloat(R.styleable.AspectRatioImageView_aspectRatio, DEFAULT_ASPECT_RATIO)
             a.recycle()
         }
     }
