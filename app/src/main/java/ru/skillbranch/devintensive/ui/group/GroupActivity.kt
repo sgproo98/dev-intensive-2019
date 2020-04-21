@@ -2,7 +2,6 @@ package ru.skillbranch.devintensive.ui.group
 
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.icu.text.SearchIterator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu

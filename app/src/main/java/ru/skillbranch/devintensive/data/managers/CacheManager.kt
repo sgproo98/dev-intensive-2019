@@ -1,6 +1,5 @@
-package ru.skillbranch.devintensive.models.data.managers
+package ru.skillbranch.devintensive.data.managers
 
-import android.provider.ContactsContract
 import androidx.lifecycle.MutableLiveData
 import ru.skillbranch.devintensive.extensions.mutableLiveData
 import ru.skillbranch.devintensive.models.data.Chat
